@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block title %}{{ hall.name }}{% endblock %}
+{% block content %}
+<a href="{{ url_for('index') }}" class="btn btn-secondary btn-sm mb-3">&larr; Back to Halls</a>
+<h2 class="mb-4">{{ hall.name }} <small class="text-muted">({{ hall.capacity }} capacity)</small></h2>
+
+<div class="row">
+    {% for slot in slots %}
+    <div class="col-md-4 mb-3">
+        <div class="card {% if slot.is_booked %}border-danger{% else %}border-success{% endif %}">
+            <div class="card-body">
+                <h5 class="card-title">{{ slot.date }}</h5>
+                <p class="card-text">{{ slot.time_range }}</p>
+                {% if slot.is_booked %}
+                    <span class="badge bg-danger">Booked</span>
+                {% else %}
+                    <a href="{{ url_for('book_slot', slot_id=slot.id) }}" class="btn btn-success btn-sm">Book This Slot</a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

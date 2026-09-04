@@ -1,0 +1,15 @@
+body {
+    background-color: #f4f6f8;
+}
+
+.card {
+    transition: transform 0.15s ease-in-out;
+}
+
+.card:hover {
+    transform: translateY(-3px);
+}
+
+.navbar-brand {
+    font-weight: 600;
+}
